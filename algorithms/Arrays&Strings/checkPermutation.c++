@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <string>
+#include <chrono>
 
 // Loop through string1 and add to hash
 // Loop through string2 and decrement the hash
@@ -24,10 +25,7 @@ bool isPermutation(std::string *string1, std::string  *string2){
 
     for (char c : *string2){
         hash[c]--;
-    }
-
-    for (auto &pair : hash){
-        if (pair.second != 0){
+        if (hash[c] < 0) {
             return false;
         }
     }
@@ -36,6 +34,8 @@ bool isPermutation(std::string *string1, std::string  *string2){
 }
 
 int main (){
+    auto start = std::chrono::high_resolution_clock::now();
+
     std::string string1 = "abc";
     std::string string2 = "bac";
     std::string string3 = "bbb";
@@ -45,6 +45,11 @@ int main (){
     
     std::cout << "Is " << string2 << " a permutation of " << string3 << "? " 
               << (isPermutation(&string2, &string3) ? "Yes" : "No") << std::endl;
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+
+    std::cout << "Time taken: " << duration.count() << " microseconds" << std::endl;
 
     return 0;
 }
