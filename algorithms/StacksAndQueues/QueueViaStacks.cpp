@@ -2,11 +2,6 @@
 // Implement a MyQueue class which implements a queue using two stacks
 
 #include <stack>
-
-// Input: 1, 3, 4, 5
-// Queue: 5, 4, 3, 1
-// Stack1: 1, 3, 4, 5
-// Stack2: 
 class MyQueue {
     private:
         std::stack<int> mainStack;
@@ -30,12 +25,15 @@ class MyQueue {
 
         int peek() {
             shiftStacks();
+            if (queueStack.empty()) return -1;
             return queueStack.top();
         }
 
         void pop() {
             shiftStacks();
-            queueStack.pop();
+            if (!queueStack.empty()) {
+                queueStack.pop();
+            }
         }
 
         bool empty() {

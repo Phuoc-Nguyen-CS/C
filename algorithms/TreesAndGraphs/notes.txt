@@ -1,0 +1,32 @@
+// Trees Notes
+
+Trees: a data structure composed of nodes
+- Has a root nodes
+    - Has 0 or more child nodes
+        - Child node has 0 or more child nodes etc..
+
+- Can't contain cycles
+- Can be in any order
+- May/May Not have links back to their parent nodes
+
+    -- Example --
+class Node {
+    public String name;
+    public Node[] children;
+}
+
+Class Tree {
+    public Node root;
+}
+
+Trees vs. Binary Trees
+
+Binary Tree:
+- Has up to two children
+    - Anymore and it is not longer considered binary Tree
+- Node is called "leaf" if no children
+
+Binary Tree vs. Binary Search Tree
+- A binary tree that follows:
+    all left descendents <= n < all right descendents
+
