@@ -30,3 +30,119 @@ Binary Tree vs. Binary Search Tree
 - A binary tree that follows:
     all left descendents <= n < all right descendents
 
+Binary Heaps (Min Heaps and Max Heaps)
+
+- A complete binary tree where each node is smaller than its children
+
+Key Operations:
+    - insert (min-heap)
+        - start by inserting element at the bottom
+            - insert at rightmost spot as to maintain the complete binary tree
+        - "fix" the tree by swapping new element with parent, until correct spot for element
+    - extract_min
+        - remove the minimum element and swap it with the last element in the heap
+            - bottom most, right most element
+        - bubble down element swapping with children
+        - no inherent ordering between left and right element
+            - take the smaller one in order to maintain min heap
+        - basically: 
+            1. remove min
+            2. swap with bottom most and right most element (last element)
+            3. continue swap down the tree to maintain heap
+            4. swap by swapping with the least element to maintain heap     
+
+Tries (Prefix Trees) 
+    - Used to store entire (English) language for quick prefix lookups
+
+Graphs
+    - A tree is a graph but not all graphs are Trees
+    - It is a collection of nodes with edges between (some of) them
+        - Can be directed (following the graph) or undirected.
+            - Directed edges are like a one-way streets
+            - Undirected edges are two-way streets
+    - Graph can consist of multiple isolated subgraphs
+    - If there is a path between every pair of vertices, it is called a connected graph
+    - Graph can also have cycles (or not).
+    - Acyclic graph is one without cycles
+
+    Representing Graphs
+        Adjacency List
+            - Most common way to represent graph
+            - Every vertex stores a list of adjacent verticies
+                - In a undirected it is stored twice
+                    Ex: vertices(a,b) would be stored in both a and b 
+            
+            class Graph {
+                public Node[] nodes;
+            }
+
+            class Node {
+                public string Name;
+                public Node[] children;
+            }
+        
+        Adjajency Matrices
+            - NxN boolean matrix (N is the number of nodes)
+            - true value at matrix[i][j] indicates an edge from node i to node j
+            - In an undirected graph:
+                - adjajency matrix will be symmetric
+            - directed graph will differ
+
+                 0 1 2 3 j
+                 -------
+           i 0 | 0 1 0 0
+             1 | 0 0 1 0 
+             2 | 1 0 0 0 
+             3 | 0 0 1 0
+
+             - Every true value here contains a path from i -> j
+            
+Graph Search
+    - Depth-first search (DFS)
+        - Start at root and go deep first
+            - Can be an arbitrarily selected node
+        - Explore each branch completelely before moving on to next branch 
+        
+        
+    - Breadth-first search (BFS)
+        - Start at root and go wide
+            - Can be an arbitrarily selected node
+        - Explore each neighbor before going on to any children
+    
+    - DFS is often preferred if we want to visit every node in the graph
+
+    - Finding shortest path (or any path) between two nodes. BFS is generally better
+
+
+    -- DFS psuedocode --
+        void search(Node root) {
+            if (root == null) return;
+
+            visit(root);
+            root.visited(true);
+
+            // Search the neighbors and visit if we haven't yet
+            for each (Node n in root.adjacent) {
+                if (n.visited == false) {
+                    search(n);
+                }
+            }
+        }
+
+    -- BFS psuedocode -- 
+        void search (Node root) {
+            Queue queue = new Queue();
+            root.marked = true;
+            queue.enqueue(root); // Adding to end of the queue
+
+            while (!queue.isEmpty()) { 
+                Node r = queue.dequeue(); // Remove from the front of the queue
+                visist(r);
+                for each (Node n in r.adjacent) {
+                    if (n.marked == false) {
+                        n.marked = true;
+                        queue.enqueue(n);
+                    }
+                }    
+            }
+        }
