@@ -146,3 +146,38 @@ Graph Search
                 }    
             }
         }
+
+Bidirectional Search
+    - Used to find the shortest path between a source and destination node.
+    - Runs two simultaneous breadth-first searches, one from each node
+        - Collision means we found the path
+    
+    Say we want to find the path between Node(s) and Node(j) with a length of (d)
+        - In BFS it would be (k^d)
+        - In Bidirectional it would be (k^(d/2)) since we are going from both ends
+
+
+-- Interview Questions -- 
+
+4.1 Route Between Nodes: Given a directed graph, design an algorithm to find out whether
+there is a route between two nodes.
+
+We can consider DFS here as an option since we are looking to see if there exist a path
+not the fastest route.
+
+bool existPath(Node* start, Node* end) {
+    if (start == nullptr) return false;
+    if (start == end) return true;
+
+    start->visited = true;
+
+    for (Node* neighbor : start->adj) {
+        if (!neighbor->visited) {
+            if(existPath(neighbor, end)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
