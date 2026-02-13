@@ -1,0 +1,41 @@
+Binary Representation
+    -- Example --
+       - 1011 in binary
+       - (1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (1 * 2^0) = 11
+    Signed integers use Most Significant Bit (MSB) to denote
+        - 0 for positive
+        - 1 for negative
+
+Bitwise Operators
+    - AND (&): Returns 1 if both are 1
+        - Useful for filtering
+    - OR (|): Returns 1 if at least one of the the bits is 1
+        - Useful for setting
+    - XOR (^): Returns 1 if bits are different
+        - Find unique elements
+    - NOT (~): Inverts the bits
+    - Shift Left (<<): Multipling by power of 2
+    - Shift Right (>>): Dividing by powers of two
+
+Tips for Manipulation
+    Clearing the lowest set bit:
+        x & (x - 1)
+    Checking power of two:
+        x & (x - 1) == 0
+    Finding the position of the lowest set bit:
+        x & -x
+
+Common Patterns in Bit Manipulation Problems
+    Counting Bits: May require counting # of 1's in binary number
+        - Use x & (x - 1) to count number of 1'set
+    XOR Trick: 
+        x ^ x = 0
+        x ^ 0 = x
+
+Two's Complement
+    1.) Flip all bits
+    2.) Add 1 to it
+
+
+
+
