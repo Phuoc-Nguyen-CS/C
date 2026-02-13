@@ -6,6 +6,10 @@ Binary Representation
         - 0 for positive
         - 1 for negative
 
+Two's Complement
+    1.) Flip all bits
+    2.) Add 1 to it
+
 Bitwise Operators
     - AND (&): Returns 1 if both are 1
         - Useful for filtering
@@ -31,10 +35,40 @@ Common Patterns in Bit Manipulation Problems
     XOR Trick: 
         x ^ x = 0
         x ^ 0 = x
+    Get Bit:
+        1. Shifts 1 over i bits 
+        2. By performing an AND, we clear all bits other than the bit at i,
 
-Two's Complement
-    1.) Flip all bits
-    2.) Add 1 to it
+        boolean getBit(int num, int i) {
+            return ((num & (1 << i)) != 0)
+        }
+    
+    Set Bit:
+        Shifts 1 over by i bits and OR will always set that bit
+
+        int setBit(int num, int i) {
+            return num | (1 << i);
+        }
+
+    Clear Bit:
+        Creates a 0 at i'th bit and clears it with &
+        int clearBit(int num, int i) {
+            int mask = ~(1 << i);
+            return num & mask;
+        }
+    
+    Update Bit:
+        1. Clear the bit w/ mask
+        2. Value we move to correct bit with value << i 
+        3. Merge OR so 0 | anything = anything
+
+        int updateBit (int num, int i, boolean bitIs1) {
+            int value = bitIs1 ? 1 : 0;
+            int mask = ~(1 << i);
+            return (num & mask) | (value << i);
+        }
+
+
 
 
 
