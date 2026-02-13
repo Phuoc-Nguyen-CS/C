@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
-
+#include <sstream> //stringstream
 // Takes in a book and returns the number of time the word is found in the book
 // Time Complexity O(N)
 // Space Complexity O(1)
@@ -51,11 +51,19 @@ void wordFrequencyCache(std::string book, std::unordered_map<std::string, int>& 
     }
 }
 
+void wordFrequencyCacheStringStream(std::string book, std::unordered_map<std::string, int>& mp) {
+    std::stringstream ss(book);
+    std::string word;
+
+    while (ss >> word) {
+        mp[word]++;
+    }
+}
 int main() {
     std::unordered_map<std::string, int> mp;
     std::string book = "  apple banana   apple orange banana apple  ";
     int wordCount = wordFrequency(book, "apple");
-    wordFrequencyCache(book, mp);
+    wordFrequencyCacheStringStream(book, mp);
 
     std::cout << "--- wordFrequency O(N) ---" << std::endl;
     std::cout << wordCount << std::endl;
