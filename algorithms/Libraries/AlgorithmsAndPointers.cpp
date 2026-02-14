@@ -14,6 +14,10 @@ void algo_review() {
         return abs(a) < abs(b);
     });
 
+    std::sort(nums.begin(), nums.end(), [](int& a, int& b) {
+        return a < b ; // Returns if a before b
+    });
+
     // Binary Search (Returns boolean, requires sorted range)
     bool exists = std::binary_search(nums.begin(), nums.end(), 4);
 
