@@ -31,6 +31,7 @@ int wordFrequency(std::string book, std::string target) {
 
 // We would then need to cache the book into a map so 
 // if they were to call it again we'd have an immediate look up.
+// Time Complexity O(N) but the look up for future words would be O(1)
 void wordFrequencyCache(std::string book, std::unordered_map<std::string, int>& mp) {
     std::string word = "";
     // Loop through the book and every word add to cache 
