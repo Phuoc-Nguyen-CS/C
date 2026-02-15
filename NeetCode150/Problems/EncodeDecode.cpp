@@ -23,7 +23,6 @@ public:
         int i = 0;
         while (i < s.size())
         {
-
             // Get to the delimiter
             int j = i;
             while (s[j] != '#')
