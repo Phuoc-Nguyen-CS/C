@@ -1,7 +1,8 @@
-class Solution
-{
+#include "includes.h"
+
+class Solution {
 public:
-    bool hasDuplicate(vector<int> &nums)
+    bool hasDuplicate(std::vector<int> &nums)
     {
         std::unordered_set<int> seen;
 

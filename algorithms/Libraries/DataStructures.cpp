@@ -19,7 +19,12 @@ void ds_review() {
     minHeap.push(5);
     minHeap.push(20);
     int smallest = minHeap.top(); // Accessing the smallest element - O(1)
-    minHeap.pop();                // Removing the smallest element- O(log n)
+    minHeap.pop();                // Removing the smallest element- O(log n). 5 is now at the top
+
+    // Checks if empty
+    if (!minHeap.empty()) {
+        std::cout << minHeap.size();
+    }
 
     // 3. Unordered Map (Hash Table)
     std::unordered_map<std::string, int> fruitBasket;

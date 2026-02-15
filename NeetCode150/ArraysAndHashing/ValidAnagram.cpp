@@ -1,15 +1,14 @@
-class Solution
-{
+#include "includes.h"
+
+class Solution {
 public:
-    vector<int> twoSum(vector<int> &nums, int target)
-    {
+    std::vector<int> twoSum(std::vector<int> &nums, int target) {
 
         // Maps: difference, index
         std::unordered_map<int, int> mp;
 
         // Go through the array
-        for (int i = 0; i < nums.size(); ++i)
-        {
+        for (int i = 0; i < nums.size(); ++i) {
             // Get the difference
             int diff = target - nums[i];
             // If the difference exists in the mp
