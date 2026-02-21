@@ -31,7 +31,7 @@ public:
                     width = i - st.top() - 1;
                 }
 
-                maxRect = max(maxRect, height * width);
+                maxRect = std::max(maxRect, height * width);
             }
 
             st.push(i);

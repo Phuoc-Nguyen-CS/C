@@ -5,7 +5,7 @@ public:
     std::string minWindow(std::string s, std::string t) {
        
         // We want to return the minimum window substring in which t is found in s
-        // Defining the problem:
+        // Defining th problem:
         // We need to find a way to detect unique strings & count of each letter
         // Afterwards we need to figure out the window size based on the information
         // Window size can be found from right - left + 1
