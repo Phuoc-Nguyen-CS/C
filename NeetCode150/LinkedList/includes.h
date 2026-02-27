@@ -39,4 +39,20 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+struct Node
+{
+    int val;        // The value stored in the node
+    Node *next;     // Pointer to the next node in the list
+    Node *random;   // Location to a random node
+
+    // Default constructor (sets val to 0 and next to null)
+    Node() : val(0), next(nullptr), random(nullptr){}
+
+    // Constructor with value (sets next to null)
+    Node(int x) : val(x), next(nullptr), random(nullptr){}
+
+    // Constructor with value and a specific next node
+    Node(int x, Node *next, Node *random) : val(x), next(next), random(random) {}
+};
+
 #endif
