@@ -9,14 +9,16 @@ public:
         std::unordered_map<Node *, Node *> mp;
 
         Node *curr = head;
+        // Maps curr node to a new node 
         while (curr != nullptr)
         {
             mp[curr] = new Node(curr->val);
             curr = curr->next;
         }
 
+        // Do the linking here
         curr = head;
-        while (curr)
+        while (curr != nullptr)
         {
             mp[curr]->next = mp[curr->next];
             mp[curr]->random = mp[curr->random];
