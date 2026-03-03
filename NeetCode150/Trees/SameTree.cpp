@@ -14,27 +14,25 @@
 class Solution
 {
 public:
-    int diameterOfBinaryTree(TreeNode *root)
+    bool isSameTree(TreeNode *p, TreeNode *q)
     {
-        int result = 0;
-        dfs(root, result);
-        return result;
+        return sameValue(p, q);
     }
 
 private:
-    int dfs(TreeNode *root, int &res)
+    bool sameValue(TreeNode *p, TreeNode *q)
     {
-        if (!root)
+        if (!p && !q)
+            return true;
+
+        // Checks if the numbers match
+        if (p && q && p->val == q->val)
         {
-            return 0;
+            return sameValue(p->left, q->left) && sameValue(p->right, q->right);
         }
-
-        int left = dfs(root->left, res);
-        int right = dfs(root->right, res);
-
-        // Updates if we found a new max width
-        res = std::max(res, left + right);
-        // Return the updated depth
-        return 1 + std::max(left, right);
+        else
+        {
+            return false;
+        }
     }
 };
