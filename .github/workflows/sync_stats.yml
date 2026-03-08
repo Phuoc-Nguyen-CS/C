@@ -19,7 +19,7 @@ jobs:
 
       - name: Repository Dispatch
         run: |
-          curl -X POST https://api.github.com/repos/Phuoc-Nguyen-CS/portfolio-repo/dispatches \
+          curl -X POST https://api.github.com/repos/Phuoc-Nguyen-CS/updated_portfolio/dispatches \
           -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: bearer ${{ secrets.PORTFOLIO_TOKEN }}" \
           -d '{
