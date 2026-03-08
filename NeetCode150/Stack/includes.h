@@ -1,5 +1,6 @@
 #ifndef INCLUDES_H
 #define INCLUDES_H
+using namespace std;
 
 // Core Input/Output
 #include <iostream>

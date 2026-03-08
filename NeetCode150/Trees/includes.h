@@ -31,5 +31,5 @@ struct TreeNode
                                                                                                                                                                                                    
 };
 
-
+using namespace std;
 #endif
