@@ -1,0 +1,32 @@
+name: Sync Stats to Portfolio
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Calculate Counts
+        id: counts
+        run: |
+          # Use GITHUB_OUTPUT to make these variables globally available to other steps
+          echo "easy=$(ls Easy | wc -l)" >> $GITHUB_OUTPUT
+          echo "medium=$(ls Medium | wc -l)" >> $GITHUB_OUTPUT
+          echo "hard=$(ls Hard | wc -l)" >> $GITHUB_OUTPUT
+
+      - name: Repository Dispatch
+        run: |
+          curl -X POST https://api.github.com/repos/Phuoc-Nguyen-CS/portfolio-repo/dispatches \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: bearer ${{ secrets.PORTFOLIO_TOKEN }}" \
+          -d '{
+            "event_type": "update_stats", 
+            "client_payload": {
+              "easy": "${{ steps.counts.outputs.easy }}",
+              "medium": "${{ steps.counts.outputs.medium }}",
+              "hard": "${{ steps.counts.outputs.hard }}"
+            }
+          }'
